@@ -1,0 +1,111 @@
+<!doctype html>
+<html  class="x-admin-sm">
+<head>
+	<meta charset="UTF-8">
+	<title>亳州市人防工程建设与运维监管系统后台登录</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/login.css">
+	<link rel="stylesheet" href="./css/xadmin.css">
+    <script src="./lib/layui/layui.js" charset="utf-8"></script>
+    <script src="js/jquery.min.js" charset="utf-8"></script>
+    <script src="js/jquery.cookie.js" charset="utf-8"></script>
+  
+</head>
+<body class="login-bg" style="background:url(images/bg9.jpg) no-repeat center;background-size: cover;overflow: hidden;">
+    
+	<div id="httitle" class="layui-container" style="text-align:center; margin-bottom:-80px; margin-top:80px; font-size:34px; color:#ffffff;text-shadow:5px 2px 6px #555;">  
+	  亳州市人防工程建设与运维监管系统后台登录
+	  </div>
+    <div class="login layui-anim layui-anim-up">
+        <div class="message">请输入用户名密码：</div>
+        <div id="darkbannerwrap"></div>
+        
+        <form class="layui-form" id="dlform" >
+            <input name="ys_name" id="ws_name" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="ys_psw" id="ws_psw" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+			
+            <hr class="hr15">
+            <a onclick="ws_dl()" id="denglu1"  style="display:block; width:340px; height:40px; line-height:40px; text-align:center; color:#fff; font-size:16px; cursor:pointer; background:#189F92;" >立刻登录</a>
+            <hr class="hr20" >
+        </form>
+		<!--平台所属地：<a style="font-weight:bold; color:#FF8C14;" id="dlszd"></a> <a style="float:right; color:#189F92;" href="">重新选择</a>-->
+    </div>
+
+    <script>
+     
+    </script>
+    <!-- 底部结束 -->
+ 
+</body>
+<script>
+$("body").keydown(function() {
+     if (event.keyCode == "13") {//keyCode=13是回车键
+          $('#denglu1').click();
+      }
+ });
+function ws_dl(){  
+	window.location.href='index.html';
+	layui.use(['form', 'layer', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  
+	});
+
+		var d=$("#dlform").serialize(); // alert(d);
+	   $.post("../../../ygrf/GALoginUser",d,function(res){
+			var models = eval('(' + res + ')');
+			 if(models.code=="1"){
+				layer.msg("登录失败!");									 
+			 }
+			 if(models.code=="2"){
+				layer.msg("账号错误或不存在!");
+			 }
+			 if(models.code=="3"){
+				layer.msg("您输入的密码错误!")
+			 }
+			 if(models.code=="4"){
+				 window.location.href='index_ga.html';  
+			 }
+			 if(models.code=="5"){
+				 window.location.href='index.html'; 	 
+			 }
+			 if(models.code=="6"){
+				 window.location.href='index_s.html'; 	 
+			 }	
+			 if(models.code=="9"){
+				layer.msg("请选择加密锁方式登录!")
+			 }					 
+	   });
+}
+layui.use('layer', function(){ //独立版的layer无需执行这一句
+	  var $ = layui.jquery, layer = layui.layer; 
+	  var getExplorer = (function() {
+	var explorer = window.navigator.userAgent,
+	compare = function(s) { return (explorer.indexOf(s) >= 0); },
+	ie11 = (function() { return ("ActiveXObject" in window) })();
+	if (compare("MSIE") || ie11) { return 'ie'; }
+	else if (compare("Firefox") && !ie11) { return 'Firefox'; }
+	else if (compare("Chrome") && !ie11) { return 'Chrome'; }
+	else if (compare("Opera") && !ie11) { return 'Opera'; }
+	else if (compare("Safari") && !ie11) { return 'Safari'; }
+})()
+ 
+if (getExplorer == 'ie') {
+	layer.open({
+			title: '提醒'
+			,closeBtn: false
+			,area: '750px'
+			,content: '<div style="text-align:left; font-weight:bold; font-size:20px; color:red; margin:20px;">系统检测到您当前使用浏览器的模式不是极速模式或者未使用推荐浏览器！<br/> <a href="http://down.360safe.com/cse/360cse_9.5.0.138.exe" class="layui-btn layui-btn-xs">点我下载推荐浏览器</a></div><div style="text-align:left; font-weight:bold; font-size:20px; color:red; margin:20px;">设置浏览器为极速模式，如图所示，在URL地址栏的右侧，点击"e"图标，换成"闪电图标"模式，即设置成功极速模式。<br/> </font><br/><img width=667 src=\"images/llq.jpg\"/></div>'
+			,btn: false
+	});
+
+}
+});
+
+</script>
+</html>

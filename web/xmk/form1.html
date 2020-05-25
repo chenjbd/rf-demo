@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>阳光人防-江苏省人防工程信息公开平台</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  input{border:none; background:#f5ebc7; height:25px; line-height:25px; padding:0 10px;}
+  select{border:none; background:#f5ebc7; height:25px; line-height:25px;appearance:none;-moz-appearance:none;-webkit-appearance:none; padding:0 10px; cursor:pointer;}
+  .bz{color:red;font-style:italic}
+  .dxk{vertical-align: middle; }
+
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+		<form id="jjspform">
+		   <table cellspacing="0" width=100%>
+			<tr><th>人防审批号</th><td colspan=5><input type="text" id="widVAL" name="wid"  placeholder="" title="人防审批号" mustwrite="true" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>发改委项目编号</th><td colspan=5><input type="text" id="pwidVAL" name="pwid" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>项目名称</th><td colspan=5 ><input type="text" title="项目名称" mustwrite="true" id="pnameVAL" name="pname" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>项目地址</th><td colspan=5>
+				<select id="provinceVAL" name="province" >
+					<option value="江苏省">江苏省</option>
+				</select>
+				<select id="cityVAL" name="city" >
+					<option value="">请选择</option>
+					<option value="南京市">南京市</option>
+					<option value="无锡市">无锡市</option>
+					<option value="徐州市">徐州市</option>
+					<option value="常州市">常州市</option>
+					<option value="苏州市">苏州市</option>
+					<option value="南通市">南通市</option>
+					<option value="连云港市">连云港市</option>
+					<option value="淮安市">淮安市</option>
+					<option value="盐城市">盐城市</option>
+					<option value="扬州市">扬州市</option>
+					<option value="镇江市">镇江市</option>
+					<option value="泰州市">泰州市</option>
+					<option value="宿迁市">宿迁市</option>
+				</select>
+				<select id="countyVAL" name="county">
+					<option value="">请选择</option>
+				</select> <a class="bz">必填</a>
+			</td></tr>
+			<tr><th>许可决定时间</th><td colspan=5><input title="许可决定时间" mustwrite="true" type="date" id="pdateVAL" name="pdate" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>地上建筑面积（㎡）</th><td colspan=5><input title="地上建筑面积" mustwrite="true" value="0" type="text" id="dsjzmjVAL" name="upmj" placeholder="" style="width:80%;" onkeyup="value=value.replace(/[^\d.]/g,'')" /> <a class="bz">必填</a></td></tr>
+			<tr><th>地下建筑面积（㎡）</th><td colspan=5><input type="text" title="地下建筑面积" mustwrite="true" id="dxjzmjVAL" name="downmj" value="0" placeholder="" style="width:80%;" onkeyup="value=value.replace(/[^\d.]/g,'')" /> <a class="bz">必填</a></td></tr>
+			<tr><th>总建筑面积（㎡）</th><td colspan=5><input type="text" id="zjzmjVAL" name="totalmj" placeholder="" readonly="readonly" style="width:80%; background:#f2f2f2;" /></td></tr>
+			<tr><th>结建比例</th><td colspan=5><input type="text" title="结建比例" mustwrite="true" id="jjblVAL" name="bl" placeholder=""  readonly="readonly" style="width:80%; background:#f2f2f2;" /></td></tr>
+			<tr><th>应建防空地下室面积（㎡）</th><td colspan=5><input type="text" id="yjmjVAL" name="yjmj" placeholder="" readonly="readonly" style="width:80%; background:#f2f2f2;" /> </td></tr>
+			<tr><th>批建防空地下室面积（㎡）</th><td colspan=5><input type="text" title="批建防空地下室面积" mustwrite="true" id="sjmjVAL" name="sjmj" placeholder="" style="width:80%;" onkeyup="value=value.replace(/[^\d.]/g,'')" /> <a class="bz">必填</a></td></tr>
+			<tr><th>征收标准(元/㎡) </th><td colspan=5><input type="text" id="zsbzVAL" name="zsbz" title="征收标准" mustwrite="true"  placeholder="" style="width:15%; " /> <label style="display:none;" id="njdq"><input class="dxk" name="teshu" id="dx1"  type="radio" onclick="if(this.c==1){this.c=0;this.checked=0}else this.c=1"  value="1" /> 自持科研项目 </label><label><input class="dxk" id="dx2" name="teshu" onclick="if(this.c==1){this.c=0;this.checked=0}else this.c=1"  type="radio" value="2" /> 工业项目非生产性 </label><label><input class="dxk" name="teshu" id="dx3" onclick="if(this.c==1){this.c=0;this.checked=0}else this.c=1"  type="radio" value="3" /> 减免 </label><label><input class="dxk" name="teshu" id="dx4" onclick="if(this.c==1){this.c=0;this.checked=0}else this.c=1"  type="radio" value="4" /> 减半 </label></td></tr>
+			<tr><th>收费面积(㎡) </th><td colspan=5><input type="text" value="0" id="sfmjVAL" name="sfmj" placeholder="" style="width:80%;" onkeyup="value=value.replace(/[^\d.]/g,'')" /></td></tr>
+			
+			<tr class="xz"><td colspan=2 align=center><a class="layui-btn layui-btn-xs layui-btn-danger"> <i class="layui-icon">&#xe654;</i>  新增征收标准/收费面积</a></td></tr>
+			
+			<tr class="zs" style="display:none;"><th>征收标准2(元/㎡) </th><td colspan=5><input type="text" value="0" id="zsbzVAL2" name="beyong1" title="征收标准"  style="width:80%;" onkeyup="value=value.replace(/[^\d.]/g,'')" /></td></tr>
+			<tr class="zs" style="display:none;"><th>收费面积2(㎡) </th><td colspan=5><input type="text" value="0" id="sfmjVAL2" name="beyong2" placeholder="" style="width:80%;" onkeyup="value=value.replace(/[^\d.]/g,'')" /></td></tr>
+			
+			
+			<tr><th>应收金额(元) </th><td colspan=5><input type="text" id="ysjeVAL" name="sfje"  placeholder="" readonly="readonly" style="width:80%; background:#f2f2f2;" /></td></tr>
+
+			<!--tr><th>应收总金额(元)</th><td colspan=5 id="YSJE"></td></tr>
+			<tr><th>实收总金额(元)</th><td colspan=5 id="SSJE"></td></tr-->
+			<tr style="" class="MJ"><th>减免金额</th><td colspan=5><input type="text" value="0" id="jmjeVAL" name="jmje" placeholder="" style="width:80%;" onkeyup="value=value.replace(/[^\d.]/g,'')" /></td></tr>
+			<tr style="" class="MJ"><th>减免依据</th><td colspan=5>
+				<select id="jmyjVAL" name="jmyj" style="width:363px;" >
+					<option value="无减免">无减免</option>
+					<option value="保障房项目">保障房项目</option>
+					<option value="校安工程">校安工程</option>
+					<option value="其他学校幼儿园项目">其他学校幼儿园项目</option>
+					<option value="非营利性医疗、养老项目">非营利性医疗、养老项目</option>
+					<option value="营利性医疗、养老项目">营利性医疗、养老项目</option>
+					<option value="残疾人生活设施">残疾人生活设施</option>
+					<option value="临时建筑">临时建筑</option>
+					<option value="危房改造项目">危房改造项目</option>
+				</select>
+			</td></tr>
+			<tr><th>审批部门</th><td colspan=5><input type="text" title="审批部门" mustwrite="true" id="fzrVAL" name="fzr" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>批准人</th><td colspan=5><input type="text" title="批准人" mustwrite="true" id="pzrVAL" name="pzr" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>备注</th><td colspan=5><input type="text" title="备注" id="beizhuVAL" name="beizhu" placeholder="" style="width:80%;" /></td></tr>
+			
+	
+			<input type="hidden" name="gstime" value="0"/>
+			<input type="hidden" name="flag" value="0"/>
+			
+			<input type="hidden" name="beyong3" value="0"/>
+		
+
+			
+		 </table>
+		 <input style="margin-left:200px;" class="layui-btn layui-btn-sm" onclick="return tj();" value="提交" />
+		 <input style="" class="layui-btn layui-btn-sm layui-btn-primary" onclick="gb();" value="关闭" />
+		</form>
+
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script src="../layui/jiangsuarea.js"></script>
+<script>
+	var User = $.cookie('U'); var RoleID = $.cookie('R'); var District = $.cookie('D'); var Province = $.cookie('P'); var Name = $.cookie('N'); var City = $.cookie('C');
+</script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+
+$('input[name="teshu"]').change(function(){
+    if ($('input[name="teshu"][value="1"]').prop("checked")) {
+        $("#zsbzVAL").val('1200');
+		
+   }
+ if ($('input[name="teshu"][value="2"]').prop("checked")) {
+        $("#zsbzVAL").val('600');
+	
+   }
+ if ($('input[name="teshu"][value="3"]').prop("checked")) {
+        $("#zsbzVAL").val('0');
+    
+   }   
+	if ($('input[name="teshu"][value="4"]').prop("checked")) {
+		$("#zsbzVAL").val(parseFloat($('#zsbzVAL').val())/2);
+	
+	}
+});
+
+$('.xz').click(function() {
+	$('.zs').show(200);
+	$('.xz').hide();
+});
+
+$("#dsjzmjVAL").blur(function(){
+  $('#zjzmjVAL').val(parseFloat($('#dsjzmjVAL').val())+parseFloat($('#dxjzmjVAL').val()));
+});
+$("#dxjzmjVAL").blur(function(){
+  $('#zjzmjVAL').val(parseFloat($('#dsjzmjVAL').val())+parseFloat($('#dxjzmjVAL').val()));
+});
+$("#sfmjVAL").blur(function(){
+  $('#ysjeVAL').val(parseFloat($('#zsbzVAL').val())*parseFloat($('#sfmjVAL').val())+parseFloat($('#zsbzVAL2').val())*parseFloat($('#sfmjVAL2').val()));
+});
+$("#sfmjVAL2").blur(function(){
+  $('#ysjeVAL').val(parseFloat($('#zsbzVAL').val())*parseFloat($('#sfmjVAL').val())+parseFloat($('#zsbzVAL2').val())*parseFloat($('#sfmjVAL2').val()));
+});
+$("#dxjzmjVAL").blur(function(){
+  $('#yjmjVAL').val(parseFloat($('#zjzmjVAL').val())*parseFloat($('#jjblVAL').val())/100);
+});
+
+function tj() {
+	
+	//$('#widVAL').val('建防许结字【'+$('#widVALtime option:selected').val()+'】'+$('#widVALnum').val()+'号');
+	$('#zjzmjVAL').val(parseFloat($('#dsjzmjVAL').val())+parseFloat($('#dxjzmjVAL').val()));
+	//$('#ysjeVAL').toFixed(2);
+	$('#yjmjVAL').val(parseFloat($('#zjzmjVAL').val())*parseFloat($('#jjblVAL').val())/100);
+	
+	var count = $("input[mustwrite = 'true']", document.forms[0]);
+    for (var i = 0; i< count.length ; i++){
+         if(count[i].value == ""){
+              layer.msg(count[i].title + "为必填项");
+              count[i].focus();
+              return false;
+         }    
+    }
+	
+	var d=$("#jjspform").serialize(); // alert(d);
+	$.post("../../../ygrf/SpDo?action=add",d,function(result){ 
+		 var models = eval('(' + result + ')');
+		// alert(models.success);
+		 if(models.success==true){
+			 layer.alert("提交成功",function(){ 
+				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+				parent.layer.close(index); //再执行关闭 
+				parent.window.location.reload();
+			 });			
+		 }else{
+			 layer.alert("提交失败!",function(){
+				  layer.close(layer.index);
+			 });
+		 }
+	 });
+
+	
+}
+function gb() {
+	var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+	parent.layer.close(index); //再执行关闭   
+}
+</script>
+<script type="text/javascript">
+$("#cityVAL").change(function(){ 
+	if($('#cityVAL option:selected').val()=='南京市'){$("#zsbzVAL").val('2000');$("#njdq").show();$('input[name="teshu"]').removeProp("checked");}
+	if($('#cityVAL option:selected').val()=='无锡市'){$("#zsbzVAL").val('1200');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='徐州市'){$("#zsbzVAL").val('1000');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='常州市'){$("#zsbzVAL").val('1100');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='苏州市'){$("#zsbzVAL").val('1200');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='南通市'){$("#zsbzVAL").val('1100');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='连云港市'){$("#zsbzVAL").val('1000');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='淮安市'){$("#zsbzVAL").val('1286');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='盐城市'){$("#zsbzVAL").val('1200');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='扬州市'){$("#zsbzVAL").val('1100');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='镇江市'){$("#zsbzVAL").val('1100');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='泰州市'){$("#zsbzVAL").val('1400');$("#njdq").hide();}
+	if($('#cityVAL option:selected').val()=='宿迁市'){$("#zsbzVAL").val('1200');$("#njdq").hide();}
+});
+$("#countyVAL").change(function(){ 
+	if($('#countyVAL option:selected').val()=='玄武区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='秦淮区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#cityVAL option:selected').val()=='南京市'&&$('#countyVAL option:selected').val()=='鼓楼区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='建邺区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='浦口区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='栖霞区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='雨花台区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='江宁区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='六合区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='高淳区'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='溧水区'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('2000');}
+	if($('#countyVAL option:selected').val()=='江北新区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('2000');}
+	
+	if($('#countyVAL option:selected').val()=='梁溪区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='滨湖区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='新吴区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='锡山区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='惠山区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='江阴市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='宜兴市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1000');}
+	if($('#cityVAL option:selected').val()=='无锡市'&&$('#countyVAL option:selected').val()=='经开区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	
+	if($($('#cityVAL option:selected').val()=='徐州市'&&'#countyVAL option:selected').val()=='鼓楼区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('1000');}
+	if($($('#cityVAL option:selected').val()=='徐州市'&&'#countyVAL option:selected').val()=='经济开发区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='贾汪区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='云龙区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='泉山区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='铜山区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='睢宁县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='邳州县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='新沂市'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='丰县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='沛县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1000');}
+	
+	if($('#countyVAL option:selected').val()=='天宁区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='钟楼区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='新北区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='武进区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='溧阳市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='金坛区'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1000');}
+	if($('#cityVAL option:selected').val()=='常州市'&&$('#countyVAL option:selected').val()=='经开区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	
+	if($('#countyVAL option:selected').val()=='姑苏区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='虎丘区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='吴中区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='相城区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='常熟市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='张家港市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='昆山市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='吴江区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='太仓市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='工业园区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1200');}
+	
+	if($('#countyVAL option:selected').val()=='崇川区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='港闸区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='海安市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='如东县'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='启东市'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='如皋市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='通州区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='海门市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1100');}
+	
+	if($('#countyVAL option:selected').val()=='连云区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='海州区'){$("#jjblVAL").val('9%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='赣榆区'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='东海县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='灌云县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1000');}
+	if($('#countyVAL option:selected').val()=='灌南县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1000');}
+	
+	if($('#countyVAL option:selected').val()=='清江浦区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1286');}
+	if($('#countyVAL option:selected').val()=='淮安区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1286');}
+	if($('#countyVAL option:selected').val()=='淮阴区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1286');}
+	if($('#countyVAL option:selected').val()=='涟水县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1286');}
+	if($('#countyVAL option:selected').val()=='洪泽县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1286');}
+	if($('#countyVAL option:selected').val()=='盱眙县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1286');}
+	if($('#countyVAL option:selected').val()=='金湖县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1286');}
+	if($('#countyVAL option:selected').val()=='亭湖区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1286');}
+	if($('#cityVAL option:selected').val()=='淮安市'&&$('#countyVAL option:selected').val()=='开发区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1286');}
+	if($('#cityVAL option:selected').val()=='淮安市'&&$('#countyVAL option:selected').val()=='生态新城'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1286');}
+	
+	if($('#countyVAL option:selected').val()=='盐都区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='响水县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='滨海县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='阜宁县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='射阳县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='建湖县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='东台市'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='大丰区'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1200');}
+	
+	if($('#countyVAL option:selected').val()=='广陵区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='邗江区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='宝应县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='仪征市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='高邮市'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='江都区'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1100');}
+	
+	if($('#countyVAL option:selected').val()=='京口区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='润州区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='丹徒区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='丹阳市'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='扬中市'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='句容市'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1100');}
+	if($('#countyVAL option:selected').val()=='新区'){$("#jjblVAL").val('8%'); $("#zsbzVAL").val('1100');}
+	
+	if($('#countyVAL option:selected').val()=='海陵区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1400');}
+	if($('#countyVAL option:selected').val()=='高港区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1400');}
+	if($('#countyVAL option:selected').val()=='兴化市'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1400');}
+	if($('#countyVAL option:selected').val()=='靖江市'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1400');}
+	if($('#countyVAL option:selected').val()=='泰兴市'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1400');}
+	if($('#countyVAL option:selected').val()=='姜堰区'){$("#jjblVAL").val('6%'); $("#zsbzVAL").val('1400');}
+	
+	if($('#countyVAL option:selected').val()=='宿城区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='宿豫区'){$("#jjblVAL").val('7%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='沐阳县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='泗阳县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+	if($('#countyVAL option:selected').val()=='泗洪县'){$("#jjblVAL").val('5%'); $("#zsbzVAL").val('1200');}
+
+});
+</script>
+</body>
+</html>

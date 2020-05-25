@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="output"></div>
+<script src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="jquery.qrcode.min.js"></script>
+<script>
+jQuery(function(){
+	jQuery('#output').qrcode({				render: "canvas", //也可以替换为table				width: 250,				height: 250,				text: "https://www.baidu.com",				background : "#ffffff",       //二维码的后景色				foreground : "#0c235d"       //二维码的前景色			});
+})
+</script>
+
+</body>
+</html>

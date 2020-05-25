@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>阳光人防-江苏省人防工程信息公开平台</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+
+		   <table cellspacing="0" width=100%>
+		    <tr><th style="width:150px;">项目名称</th><td id="pnameVAL"></td></tr>
+			<tr><th>项目地址</th><td id="placeVAL"></td></tr>
+			<tr><th>项目概况</th><td id="pbasicVAL"></td></tr>
+			<tr><th>承租单位</th><td id="czdwVAL"></td></tr>
+			<tr><th>租赁形式</th><td id="zlxsVAL"></td></tr>
+			<tr><th>租金(元)</th><td id="zjVAL"></td></tr>
+			<tr><th>租赁时间</th><td><a id="zlstarttimeVAL"></a> - <a id="zlendtimeVAL"></a></td></tr>
+			<tr><th>租金去向</th><td id="zjfromVAL"></td></tr>
+			<tr><th>承办部门</th><td id="cbbmVAL"></td></tr>
+			<tr class="notgs"><th>责任人<i class="bgs">(不公示)</i></th><td id="fzrVAL"></td></tr>
+			<tr><th>备注</th><td id="beizhuVAL"></td></tr>
+
+		 </table>
+
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+var gs = getUrlParam('gs');
+	if(gs=="yes"){
+		$('.notgs').css('display','none');
+	}
+$.get("../../../ygrf/CzJSON?limit=100000&page=1&action=ID&value="+iid,function(result){   // alert(result);
+	result = result.replace(/null/g,"");
+	var models = eval('(' + result + ')');
+
+	$("#pnameVAL").text(models.data[0].pname);
+	$("#placeVAL").text(models.data[0].province+models.data[0].city+models.data[0].county);
+	
+	$("#pbasicVAL").text(models.data[0].pbasic);
+	$("#czdwVAL").text(models.data[0].czdw);
+	$("#zlxsVAL").text(models.data[0].zlxs);
+	$("#zjVAL").text(models.data[0].zj);
+	$("#zlstarttimeVAL").text(models.data[0].zlstarttime);
+	$("#zlendtimeVAL").text(models.data[0].zlendtime);
+	$("#zjfromVAL").text(models.data[0].zjfrom);
+	$("#cbbmVAL").text(models.data[0].cbbm);
+	$("#fzrVAL").text(models.data[0].fzr);
+	
+	$("#beizhuVAL").text(models.data[0].beizhu);
+});
+</script>
+</body>
+</html>

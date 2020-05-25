@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>后台管理</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  input{border:none; background:#f5ebc7; height:25px; line-height:25px; padding:0 10px;}
+  select{border:none; background:#f5ebc7; height:25px; line-height:25px;appearance:none;-moz-appearance:none;-webkit-appearance:none; padding:0 10px; cursor:pointer;}
+  .bz{color:red;font-style:italic}
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+		<form id="jjspform">
+		   <table cellspacing="0" width=100%>
+			<tr><th>报警编号</th><td colspan=5><input type="text" title="报警编号"  id="widVAL" name="wid" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>报警名称</th><td colspan=5><input type="text" title="报警名称" id="pwidVAL" name="pwid" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>报警类型</th><td colspan=5><input type="text" title="报警类型"  id="pnameVAL" name="pname"style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>报警说明</th><td colspan=5><input type="text" title="报警说明" id="provinceVAL" name="province"  placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>报警等级</th><td colspan=5><input title="报警等级" mustwrite="true" type="text" id="pdateVAL" name="pdate" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>异常时限</th><td colspan=5><input title="异常时限" mustwrite="true" type="text" id="pdateVAL" name="pdate" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>办理单位</th><td colspan=5><input title="办理单位" mustwrite="true" type="text" id="pdateVAL" name="pdate" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			
+
+			<input type="hidden" id="idVAL" name="id" value="0"/>
+			
+		 </table>
+		 <input style="margin-left:200px;" class="layui-btn layui-btn-sm" onclick="return tj();" value="提交" />
+		 <input style="" class="layui-btn layui-btn-sm layui-btn-primary" onclick="gb();" value="关闭" />
+		</form>
+		
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script src="../layui/jiangsuarea.js"></script>
+<script>
+	var User = $.cookie('U'); var RoleID = $.cookie('R'); var District = $.cookie('D'); var Province = $.cookie('P'); var Name = $.cookie('N'); var City = $.cookie('C');
+</script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+$.get("../../../ygrf/SpJSON?limit=100000&page=1&action=ID&value="+iid,function(result){   // alert(result);
+	result = result.replace(/null/g,"");
+	var models = eval('(' + result + ')');
+	
+	$("#idVAL").val(models.data[0].id);
+	$("#widVAL").val(models.data[0].wid);
+	$("#pwidVAL").val(models.data[0].pwid);
+	$("#pnameVAL").val(models.data[0].pname);
+	$("#provinceVAL").val(models.data[0].province);
+	$("#cityVAL").val(models.data[0].city);
+	$("#countyVAL").val(models.data[0].county);
+	//$("#pdateVAL").text(models.data[0].pdate);
+	//$("#dsjzmjVAL").text(models.data[0].upmj);
+	//$("#dxjzmjVAL").text(models.data[0].downmj);
+	//$("#zjzmjVAL").text(models.data[0].totalmj);
+	//$("#jjblVAL").text(models.data[0].bl);
+	//$("#yjmjVAL").text(models.data[0].yjmj);
+	//$("#sjmjVAL").text(models.data[0].sjmj);
+	//$("#zsbzVAL").text(models.data[0].zsbz);
+	//$("#sfmjVAL").text(models.data[0].sfmj);
+	//$("#ysjeVAL").val(models.data[0].sfje);
+	//$("#jmjeVAL").text(models.data[0].jmje);
+	//$("#jmyjVAL").text(models.data[0].jmyj);
+	//$("#fzrVAL").text(models.data[0].fzr);
+	//$("#pzrVAL").text(models.data[0].pzr);
+	//$("#beizhuVAL").text(models.data[0].beizhu);
+	
+});
+function tj() {
+	//必填代码
+	var count = $("input[mustwrite = 'true']", document.forms[0]);
+    for (var i = 0; i< count.length ; i++){
+         if(count[i].value == ""){
+              layer.msg(count[i].title + "为必填项");
+              count[i].focus();
+              return false;
+         }    
+    }
+	
+	var d=$("#jjspform").serialize(); // alert(d);
+	$.post("../../../ygrf/YsDo?action=add",d,function(result){ 
+		 var models = eval('(' + result + ')');
+		// alert(models.success);
+		 if(models.success==true){
+			 layer.alert("提交成功",function(){ 
+				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+				parent.layer.close(index); //再执行关闭 
+				parent.window.location.reload();
+			 });			
+		 }else{
+			 layer.alert("提交失败!",function(){
+				  layer.close(layer.index);
+			 });
+		 }
+	 });
+}
+function gb() {
+	var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+	parent.layer.close(index); //再执行关闭   
+}
+
+</script>
+</body>
+</html>

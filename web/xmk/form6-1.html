@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>阳光人防-江苏省人防工程信息公开平台</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  input{border:none; background:#f5ebc7; height:25px; line-height:25px; padding:0 10px;}
+  select{border:none; background:#f5ebc7; height:25px; line-height:25px;appearance:none;-moz-appearance:none;-webkit-appearance:none; padding:0 10px; cursor:pointer;}
+  .bz{color:red;font-style:italic}
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+		<form id="jjspform">
+		   <table cellspacing="0" width=100%>
+			<tr><th colspan=2 rowspan=10>项目可研审批</th><th>人防审批号</th><td colspan=5 id="PID"><a id="">建防许结字【</a>
+				<select name="" >
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+					<option value="2021">2021</option>
+					<option value="2022">2022</option>
+					<option value="2023">2023</option>
+					<option value="2024">2024</option>
+					<option value="2025">2025</option>
+					<option value="2026">2026</option>
+					<option value="2027">2027</option>
+					<option value="2028">2028</option>
+					<option value="2029">2029</option>
+				</select>
+			<a id="">】</a><input type="text" id="" placeholder="" title="人防审批号" mustwrite="true" style="width:50px;" onkeyup="value=value.replace(/[^\d.]/g,'')" /><a id="">号</a> <a class="bz">必填</a></td></tr>
+			<tr><th>发改委项目编号</th><td colspan=5 id="FID"><input type="text" id="" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>项目名称</th><td colspan=5 id="PRONAME"><input type="text" title="项目名称" mustwrite="true" id="" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>项目地址</th><td colspan=5 id="PROADDR">
+				<select id="provinceVAL" name="" >
+					<option value="江苏省">江苏省</option>
+				</select>
+				<select id="cityVAL" name="" >
+					<option value="">请选择</option>
+					<option value="南京市">南京市</option>
+					<option value="无锡市">无锡市</option>
+					<option value="徐州市">徐州市</option>
+					<option value="常州市">常州市</option>
+					<option value="南通市">南通市</option>
+					<option value="连云港市">连云港市</option>
+					<option value="淮安市">淮安市</option>
+					<option value="盐城市">盐城市</option>
+					<option value="扬州市">扬州市</option>
+					<option value="镇江市">镇江市</option>
+					<option value="泰州市">泰州市</option>
+					<option value="宿迁市">宿迁市</option>
+				</select>
+				<select id="countyVAL" name="">
+					<option value="">请选择</option>
+				</select> <a class="bz">必填</a>
+			</td></tr>
+			<tr><th>项目投资</th><td colspan=5 id="BLSJ"><input title="项目投资" mustwrite="true" type="text" id="" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+
+			<tr><th>资金来源</th><td colspan=5 id="YSDW"><input type="text" id="" placeholder="" title="资金来源" mustwrite="true" style="width:80%;"  /> <a class="bz">必填</a></td></tr>
+			<tr><th>立项依据</th><td colspan=5 id="YSJG"><input type="text" id="" placeholder="" title="立项依据" mustwrite="true" style="width:80%;"  /> <a class="bz">必填</a></td></tr>
+			<tr><th>承办部门</th><td colspan=5 id="YSRY"><input type="text" title="承办部门" mustwrite="true" id="" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>批准人</th><td colspan=5 id="YSFZR"><input type="text" title="批准人" mustwrite="true" id="" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			<tr><th>批准意见</th><td colspan=5 id="YSFZR"><input type="text" title="批准意见" mustwrite="true" id="" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+			
+		 </table>
+		 <input style="margin-left:200px;" class="layui-btn layui-btn-sm" onclick="return tj();" value="提交" />
+		 <input style="" class="layui-btn layui-btn-sm layui-btn-primary" onclick="gb();" value="关闭" />
+		</form>
+		
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script src="../layui/jiangsuarea.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+
+function tj() {
+	
+	var count = $("input[mustwrite = 'true']", document.forms[0]);
+    for (var i = 0; i< count.length ; i++){
+         if(count[i].value == ""){
+              layer.msg(count[i].title + "为必填项");
+              count[i].focus();
+              return false;
+         }    
+    }
+	
+	layer.alert("提交成功",function(){
+		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index); //再执行关闭 
+	});
+}
+function gb() {
+	var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+	parent.layer.close(index); //再执行关闭   
+}
+
+</script>
+</body>
+</html>

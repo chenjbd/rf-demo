@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>设备信息</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+
+		   <table cellspacing="0" width=100%>
+			<tr><th>所属单位</th><td colspan=5 id="pnameVAL">亳州市某某人防有限公司</td></tr>
+			<tr><th style="width:170px;">设备名称</th><td colspan=5 id="widVAL">防护门</td></tr>
+			<tr><th>设备类型</th><td colspan=5 id="placeVAL">大型设备</td></tr>
+			<tr><th>设备型号</th><td colspan=5 id="pdateVAL">23/AB</td></tr>
+			<tr><th>设备状态</th><td colspan=5 id="dsjzmjVAL">良好</td></tr>
+			<tr><th>数量</th><td colspan=5 id="dxjzmjVAL">23</td></tr>
+			<tr><th>生成单位</th><td colspan=5 id="zjzmjVAL">安徽某某防护设备有限公司</td></tr>
+			<tr><th>出厂编号</th><td colspan=5 id="jjblVAL">5426243452</td></tr>
+			<tr><th>出厂日期</th><td colspan=5 id="yjmjVAL">2019年2月23日</td></tr>
+			<tr><th>投入使用日期</th><td colspan=5 id="sjmjVAL">2019年4月6日</td></tr>
+			<tr><th>设备简介</th><td colspan=5 id="zsbzVAL">人防工程防护大门</td></tr>
+	
+		 </table>
+
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+var gs = getUrlParam('gs');
+	if(gs=="yes"){
+		$('.notgs').css('display','none');
+	}
+$.get("../../../ygrf/SpJSON?limit=100000&page=1&action=ID&value="+iid,function(result){   // alert(result);
+	result = result.replace(/null/g,"");
+	var models = eval('(' + result + ')');
+	
+	$("#widVAL").text(models.data[0].wid);
+	$("#pwidVAL").text(models.data[0].pwid);
+	$("#pnameVAL").text(models.data[0].pname);
+	$("#placeVAL").text(models.data[0].province+models.data[0].city+models.data[0].county);
+	$("#pdateVAL").text(models.data[0].pdate);
+	$("#dsjzmjVAL").text(models.data[0].upmj);
+	$("#dxjzmjVAL").text(models.data[0].downmj);
+	$("#zjzmjVAL").text(models.data[0].totalmj);
+	$("#jjblVAL").text(models.data[0].bl);
+	$("#yjmjVAL").text(Number(models.data[0].yjmj).toFixed(2));
+	$("#sjmjVAL").text(models.data[0].sjmj);
+	$("#zsbzVAL").text(models.data[0].zsbz);
+	$("#sfmjVAL").text(models.data[0].sfmj);
+	$("#ysjeVAL").text(Number(models.data[0].sfje).toFixed(2));
+	$("#jmjeVAL").text(models.data[0].jmje);
+	
+	$("#zsbzVAL2").text(models.data[0].beyong1);
+	$("#sfmjVAL2").text(models.data[0].beyong2);
+	
+	$("#fzrVAL").text(models.data[0].fzr);
+	$("#pzrVAL").text(models.data[0].pzr);
+	$("#beizhuVAL").text(models.data[0].beizhu);
+	
+	if(models.data[0].beyong2>0){
+		$(".zs").show();
+	}
+	$("#jmyjVAL").text(models.data[0].jmyj);
+	if(models.data[0].jmyj=="1"||models.data[0].jmyj=="1.0"){
+		$("#jmyjVAL").text("保障房项目");
+	}
+	if(models.data[0].jmyj=="2"||models.data[0].jmyj=="2.0"){
+		$("#jmyjVAL").text("校安工程");
+	}
+	if(models.data[0].jmyj=="3"||models.data[0].jmyj=="3.0"){
+		$("#jmyjVAL").text("其他学校幼儿园项目");
+	}
+	if(models.data[0].jmyj=="4"||models.data[0].jmyj=="4.0"){
+		$("#jmyjVAL").text("非营利性医疗、养老项目");
+	}
+	if(models.data[0].jmyj=="5"||models.data[0].jmyj=="5.0"){
+		$("#jmyjVAL").text("营利性医疗、养老项目");
+	}
+	if(models.data[0].jmyj=="6"||models.data[0].jmyj=="6.0"){
+		$("#jmyjVAL").text("残疾人生活设施");
+	}
+	if(models.data[0].jmyj=="7"||models.data[0].jmyj=="7.0"){
+		$("#jmyjVAL").text("临时建筑");
+	}
+	
+	
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>后台管理</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+        <script src="./lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./js/xadmin.js"></script>
+
+    </head>
+    <body>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+
+                <div class="layui-col-sm12 layui-col-md12">
+					<div class="layui-tab">
+					  <ul class="layui-tab-title">
+						<li class="layui-this">图样显示</li>
+						<li>表格显示</li>
+					  </ul>
+					  <div class="layui-tab-content">
+						<div class="layui-tab-item layui-show">
+							<div class="layui-card">
+								<div class="layui-card-header">维护维修情况统计</div>
+								<div class="layui-card-body" style="min-height: 480px;">
+									<div id="main1" class="layui-col-sm12" style="height: 450px;"></div>
+
+								</div>
+							</div>
+						</div>
+						<div class="layui-tab-item">
+							<table class="layui-table">
+							  <thead>
+								<tr>
+								  <th style="width:80px;">序号</th>
+								  <th style="width:120px;">区县</th>
+								  <th>已维修设备数量</th>
+								</tr> 
+							  </thead>
+							  <tbody>
+								<tr>
+								  <td>1</td>
+								  <td>谯城区</td>
+								  <td>430</td>
+								</tr>
+								<tr>
+								  <td>2</td>
+								  <td>涡阳县</td>
+								  <td>512</td>
+								</tr>
+								<tr>
+								  <td>3</td>
+								  <td>蒙城县</td>
+								  <td>230</td>
+								</tr>
+								<tr>
+								  <td>4</td>
+								  <td>利辛县</td>
+								  <td>334</td>
+								</tr>
+								
+							  </tbody>
+							</table>
+						</div>
+					  </div>
+					</div>
+                    
+                </div>
+        
+            </div>
+        </div>
+        </div>
+    
+        <script src="./js/echarts.min.js"></script>
+		<script src="../layui/jquery.min.js"></script>
+		<script src="../layui/jquery.cookie.js"></script>
+        <script type="text/javascript">
+		layui.use('element', function(){
+		  var element = layui.element;
+		  
+		});
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main1'));
+
+        // 指定图表的配置项和数据		
+		var	option = {
+				title : {
+					text: '维护维修情况统计',
+					subtext: '2020年开始'
+				},
+				tooltip : {
+					trigger: 'axis'
+				},
+				toolbox: {
+					show : true,
+					feature : {
+						dataView : {show: true, readOnly: false},
+						magicType : {show: true, type: ['line', 'bar']},
+						restore : {show: true},
+						saveAsImage : {show: true}
+					}
+				},
+				calculable : true,
+				xAxis : [
+					{
+						type : 'category',
+						data : ['谯城区', '涡阳县', '蒙城县', '利辛县']
+					}
+				],
+				yAxis : [
+					{
+						type : 'value'
+					}
+				],
+				series : [
+					{
+						name:'已维修设备数量',
+						type:'bar',
+						data:[430, 512, 230, 334],
+						markPoint : {
+							data : [
+								{type : 'max', name: '最大值'},
+								{type : 'min', name: '最小值'}
+							]
+						},
+						markLine : {
+							data : [
+								{type : 'average', name: '平均值'}
+							]
+						}
+					}
+				]
+			};
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        
+    </script>
+ 
+    </body>
+</html>

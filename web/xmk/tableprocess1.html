@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>阳光人防-江苏省人防工程信息公开平台</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <link rel="stylesheet" href="../layui/css/lct.css">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  input{border:none; background:#f5ebc7; height:25px; line-height:25px; padding:0 10px;}
+  select{border:none; background:#f5ebc7; height:25px; line-height:25px;appearance:none;-moz-appearance:none;-webkit-appearance:none; padding:0 10px; cursor:pointer;}
+  .bz{color:red;font-style:italic}
+  .dxk{vertical-align: middle; }
+  </style>
+
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-md12">
+	
+		<div class="layui-tab layui-tab-brief">
+		  <ul class="layui-tab-title">
+			<li class="layui-this">审批过程</li>
+			<li>审批流程图</li>
+		  </ul>
+		  <div class="layui-tab-content">
+			<div class="layui-tab-item layui-show">
+				   <table cellspacing="0" width=100%>
+						<tr><th colspan=2 align=center>初审环节</th></tr>
+						<tr><th style="width:200px;">初审时间</th><td colspan=5></td></tr>
+						<tr><th>初审部门</th><td colspan=5></td></tr>
+						<tr><th>初审人</th><td colspan=5></td></tr>
+						<tr><th>初审意见</th><td colspan=5></td></tr>
+				
+						<tr><th colspan=2 align=center>复审环节</th></tr>
+						<tr><th>复审时间</th><td colspan=5></td></tr>
+						<tr><th>复审部门</th><td colspan=5></td></tr>
+						<tr><th>复审人</th><td colspan=5></td></tr>
+						<tr><th>复审意见</th><td colspan=5></td></tr>
+						
+						<tr><th colspan=2 align=center>审核环节</th></tr>
+						<tr><th>审核时间</th><td colspan=5></td></tr>
+						<tr><th>审核部门</th><td colspan=5></td></tr>
+						<tr><th>审核人</th><td colspan=5></td></tr>
+						<tr><th>审核意见</th><td colspan=5></td></tr>
+						
+						<tr><th colspan=2 align=center>制作许可决定环节</th></tr>
+						<tr><th>制作许可决定时间</th><td colspan=5></td></tr>
+						<tr><th>制作许可决定部门</th><td colspan=5></td></tr>
+						<tr><th>工作人员</th><td colspan=5></td></tr>
+						<tr><th>备注</th><td colspan=5></td></tr>
+					</table>
+			</div>
+			<div class="layui-tab-item">
+			<div class="layui-fluid">  
+				<div class="layui-row">
+					
+					<div class="layui-col-xs12 lct">
+						<div class="bz step1">
+							<a>受理 <i class="layui-icon layui-icon-ok" style="font-size: 20px;"></i></a>
+						</div>
+						
+						<div class="jt_down"><img src="images/jt.png"></div>
+						
+						<div class="bz step2">
+							<a>初审 <i class="layui-icon layui-icon-ok" style="font-size: 20px;"></i></a>
+							<div class="fxd"><div class="fxdtext pass">收费面积</div></div>
+						</div>
+						
+						<div class="jt_down"><img src="images/jt.png"></div>
+						
+						<div class="bz step3 danger">
+							<a>复审 <i class="layui-icon layui-icon-tips" style="font-size: 20px;"></i></a>
+							<div class="fxd"><div class="fxdtext jingao">减免金额</div></div>
+						</div>
+						
+						<div class="jt_down"><img src="images/jt.png"></div>
+						
+						<div class="bz step4 no">
+							<a>审核 <i class="layui-icon layui-icon-close" style="font-size: 20px;"></i></a>
+						</div>
+						
+						<div class="jt_down"><img src="images/jt.png"></div>
+						
+						<div class="bz step5 defut">
+							<a>制作许可决定</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			</div>
+		  </div>
+		</div>
+		
+
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script>
+	var User = $.cookie('U'); var RoleID = $.cookie('R'); var District = $.cookie('D'); var Province = $.cookie('P'); var Name = $.cookie('N'); var City = $.cookie('C');
+</script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+
+</script>
+</body>
+</html>

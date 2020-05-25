@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>江苏省人民防空办公室内控机制平台</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+
+		   <table cellspacing="0" width=100%>
+		    <tr><th>采购项目</th><td>车载高清系统改造项目</td></tr>
+			<tr><th>采购方式</th><td>单一来源采购</td></tr>
+			<tr><th>采购合同</th><td><a class="layui-btn layui-btn-sm">东方西路南侧、名山路东侧（QL050211）地块工程.doc</a></td></tr>
+			<tr><th>采购金额(元)</th><td>435000</td></tr>
+			<tr><th>审批意见</th><td><a class="layui-btn layui-btn-sm">东方西路南侧、名山路东侧（QL050211）地块工程.doc</a></td></tr>
+			<tr><th>承办部门</th><td>指挥通信处</td></tr>
+			<tr><th>责任人</th><td>宦馨伽</td></tr>
+
+		 </table>
+
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+$(".bd").click(function(){
+  layer.open({
+	  type: 2, 
+	  content: 'http://sentsin.com' ,
+	  area:['750px','90%']
+	}); 
+});
+</script>
+</body>
+</html>

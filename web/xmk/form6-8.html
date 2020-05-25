@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>阳光人防-江苏省人防工程信息公开平台</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  input{border:none; background:#f5ebc7; height:25px; line-height:25px; padding:0 10px;}
+  select{border:none; background:#f5ebc7; height:25px; line-height:25px;appearance:none;-moz-appearance:none;-webkit-appearance:none; padding:0 10px; cursor:pointer;}
+  .bz{color:red;font-style:italic}
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+		<form id="jjspform">
+		   <table cellspacing="0" width=100%>
+			
+			<tr><th colspan=2>工程决算</th><th>决算金额（元）</th><td colspan=5 id="YSFZR"><input type="text" title="决算金额（元）" mustwrite="true" id="" placeholder="" style="width:80%;" /> <a class="bz">必填</a></td></tr>
+
+			
+		 </table>
+		 <input style="margin-left:200px;" class="layui-btn layui-btn-sm" onclick="return tj();" value="提交" />
+		 <input style="" class="layui-btn layui-btn-sm layui-btn-primary" onclick="gb();" value="关闭" />
+		</form>
+		
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script src="../layui/jiangsuarea.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+
+function tj() {
+	
+	var count = $("input[mustwrite = 'true']", document.forms[0]);
+    for (var i = 0; i< count.length ; i++){
+         if(count[i].value == ""){
+              layer.msg(count[i].title + "为必填项");
+              count[i].focus();
+              return false;
+         }    
+    }
+	
+	layer.alert("提交成功",function(){
+		var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		parent.layer.close(index); //再执行关闭 
+	});
+}
+function gb() {
+	var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+	parent.layer.close(index); //再执行关闭   
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>阳光人防-江苏省人防工程信息公开平台</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  input{border:none; background:#f5ebc7; height:25px; line-height:25px; padding:0 10px;}
+  select{border:none; background:#f5ebc7; height:25px; line-height:25px;appearance:none;-moz-appearance:none;-webkit-appearance:none; padding:0 10px; cursor:pointer;}
+  .bz{color:red;font-style:italic}
+  .dxk{vertical-align: middle; }
+
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+		<form id="jjspform">
+		   <table cellspacing="0" width=100%>
+			<tr><th colspan=2>初审环节</th></tr>
+			<tr><th>初审时间</th><td colspan=5><input title="初审时间" mustwrite="true" type="date" id="pdateVAL" name="pdate" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>初审部门</th><td colspan=5><input type="text" title="初审部门" mustwrite="true" id="fzrVAL" name="fzr" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>初审人</th><td colspan=5><input type="text" title="初审人" mustwrite="true" id="pzrVAL" name="pzr" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>初审意见</th><td colspan=5><input type="text" title="初审意见" mustwrite="true" id="pzrVAL" name="pzr" placeholder="" style="width:80%;" /></td></tr>
+	
+			<tr><th colspan=2>复审环节</th></tr>
+			<tr><th>复审时间</th><td colspan=5><input title="复审时间" mustwrite="true" type="date" id="pdateVAL" name="pdate" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>复审部门</th><td colspan=5><input type="text" title="复审部门" mustwrite="true" id="fzrVAL" name="fzr" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>复审人</th><td colspan=5><input type="text" title="复审人" mustwrite="true" id="pzrVAL" name="pzr" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>复审意见</th><td colspan=5><input type="text" title="复审意见" mustwrite="true" id="pzrVAL" name="pzr" placeholder="" style="width:80%;" /></td></tr>
+			
+			<tr><th colspan=2>审核环节</th></tr>
+			<tr><th>审核时间</th><td colspan=5><input title="审核时间" mustwrite="true" type="date" id="pdateVAL" name="pdate" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>审核部门</th><td colspan=5><input type="text" title="审核部门" mustwrite="true" id="fzrVAL" name="fzr" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>审核人</th><td colspan=5><input type="text" title="审核人" mustwrite="true" id="pzrVAL" name="pzr" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>审核意见</th><td colspan=5><input type="text" title="审核意见" mustwrite="true" id="pzrVAL" name="pzr" placeholder="" style="width:80%;" /></td></tr>
+			
+			<tr><th colspan=2>制作许可决定环节</th></tr>
+			<tr><th>制作许可决定时间</th><td colspan=5><input title="制作许可决定时间" mustwrite="true" type="date" id="pdateVAL" name="pdate" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>制作许可决定部门</th><td colspan=5><input type="text" title="制作许可决定部门" mustwrite="true" id="fzrVAL" name="fzr" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>工作人员</th><td colspan=5><input type="text" title="工作人员" mustwrite="true" id="pzrVAL" name="pzr" placeholder="" style="width:80%;" /></td></tr>
+			<tr><th>备注</th><td colspan=5><input type="text" title="备注" id="beizhuVAL" name="beizhu" placeholder="" style="width:80%;" /></td></tr>
+		 </table>
+		 <input style="margin-left:200px;" class="layui-btn layui-btn-sm" onclick="return tj();" value="提交" />
+		 <input style="" class="layui-btn layui-btn-sm layui-btn-primary" onclick="gb();" value="关闭" />
+		</form>
+
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script>
+	var User = $.cookie('U'); var RoleID = $.cookie('R'); var District = $.cookie('D'); var Province = $.cookie('P'); var Name = $.cookie('N'); var City = $.cookie('C');
+</script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+
+function tj() {
+	
+	var count = $("input[mustwrite = 'true']", document.forms[0]);
+    for (var i = 0; i< count.length ; i++){
+         if(count[i].value == ""){
+              layer.msg(count[i].title + "为必填项");
+              count[i].focus();
+              return false;
+         }    
+    }
+	
+	var d=$("#jjspform").serialize(); // alert(d);
+	$.post("../../../ygrf/SpDo?action=add111111111111111",d,function(result){ 
+		 var models = eval('(' + result + ')');
+		// alert(models.success);
+		 if(models.success==true){
+			 layer.alert("提交成功",function(){ 
+				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+				parent.layer.close(index); //再执行关闭 
+				parent.window.location.reload();
+			 });			
+		 }else{
+			 layer.alert("提交失败!",function(){
+				  layer.close(layer.index);
+			 });
+		 }
+	 });
+
+	
+}
+function gb() {
+	var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+	parent.layer.close(index); //再执行关闭   
+}
+</script>
+</body>
+</html>

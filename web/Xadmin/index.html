@@ -1,0 +1,494 @@
+<!doctype html>
+<html class="x-admin-sm">
+    <head>
+        <meta charset="UTF-8">
+        <title>人防工程建设与运维监管系统</title>
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+         <link rel="stylesheet" href="./css/theme3.css"> 
+        <script src="./lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="./js/xadmin.js"></script>
+		<script src="js/jquery.min.js" charset="utf-8"></script>
+		<script src="js/jquery.cookie.js" charset="utf-8"></script>
+        <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+        <!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <script>
+            // 是否开启刷新记忆tab功能
+             var is_remember = false;
+        </script>
+		<style>
+			.container{
+				height:65px;
+				line-height:65px;
+			}
+			.left-nav{
+				top:70px;
+			}
+			.page-content{
+				top:70px;
+			}
+			.left-nav-li{
+				font-size:18px;
+				font-weight:bold;
+			}
+			.left-nav #nav li a i{
+				line-height:32px;
+			}
+			.left-nav #nav li a{
+				padding:10px 0px 10px 10px;
+			}
+			.left-nav #nav li .sub-menu li cite{
+				font-size:13px;
+			}
+		</style>
+    </head>
+    <body class="index">
+        <!-- 顶部开始 -->
+        <div class="container">
+            <div class="logo" style="float:left;">
+                <img src="images/logo.png"></div>
+            <div class="left_open" style="float:left; margin:11px;">
+                <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
+            </div>
+            
+            <ul class="layui-nav right" lay-filter="">
+                <li class="layui-nav-item">
+                    <a><span id="yhm">admin</span>,你好！</a>
+                    <!--dl class="layui-nav-child">
+                       
+   
+                        <dd>
+                            <a href="./login.html">退出登录</a></dd>
+                    </dl-->
+                </li>
+                <li class="layui-nav-item to-index">
+                    <a href="./index.html" target="">平台首页</a></li>
+				<li class="layui-nav-item to-index">
+                    <a style="cursor:pointer;" onclick="aqset();">修改密码</a></li>
+				<li class="layui-nav-item to-index">
+                    <a href="./login.html">退出登录</a></li>
+            </ul>
+        </div>
+        <!-- 顶部结束 -->
+        <!-- 中部开始 -->
+        <!-- 左侧菜单开始 -->
+        <div class="left-nav">
+            <div id="side-nav">
+                <ul id="nav">
+                    <li>
+                        <a href="javascript:;" style="border-bottom:1px solid #dfdfdf;">
+                            <i class="iconfont left-nav-li" lay-tips="数字化档案"><img src="images/tb1.png" width=30></i>
+                            <cite style="font-size:16px; font-weight:blod;">数字化档案</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a id="list_jjsp" onclick="xadmin.add_tab('人防工程基础信息管理','DN_gcjcxx.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>人防工程基础信息管理</cite></a>
+                            </li>
+                            <li>
+                                <a id="list_ydjsf" onclick="xadmin.add_tab('设备设施信息管理','DN_sbssxx.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>设备设施信息管理</cite></a>
+                            </li>
+                            <li>
+                                <a id="list_jgys" onclick="xadmin.add_tab('改造许可信息管理','DN_gzxkxx.html',true)">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>改造许可信息管理</cite></a>
+                            </li>
+                            <li>
+                                <a id="list_ycsy" onclick="xadmin.add_tab('使用许可信息管理','DN_syxkxx.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>使用许可信息管理</cite></a>
+                            </li>
+							<li>
+                                <a id="list_ycsy" onclick="xadmin.add_tab('巡检档案管理','DN_xjda.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>巡检档案管理</cite></a>
+                            </li>
+							<li>
+                                <a id="list_ycsy" onclick="xadmin.add_tab('安全巡查档案管理','DN_aqxcda.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>安全巡查档案管理</cite></a>
+                            </li>
+							<li>
+                                <a id="list_ycsy" onclick="xadmin.add_tab('工程维修档案管理','DN_gcwxda.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>工程维修档案管理</cite></a>
+                            </li>	
+							<li>
+                                <a id="list_ycsy" onclick="xadmin.add_tab('报警档案管理','DN_bjda.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>报警档案管理</cite></a>
+                            </li>
+							<li>
+                                <a id="list_ycsy" onclick="xadmin.add_tab('电子文件管理','DN_dzwj.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>电子文件管理</cite></a>
+                            </li>
+							<li>
+                                <a id="list_ycsy" onclick="xadmin.add_tab('CAD图纸管理','DN_cad.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>CAD图纸管理</cite></a>
+                            </li>
+							<li>
+                                <a id="list_ycsy" onclick="xadmin.add_tab('土建信息管理','DN_tjxx.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>土建信息管理</cite></a>
+                            </li>
+                
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;"  style="border-bottom:1px solid #dfdfdf;">
+                            <i class="iconfont left-nav-li" lay-tips="运行监测与报警"><img src="images/tb2.png" width=30></i>
+                            <cite style="font-size:16px; font-weight:blod;">运行监测与报警</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('人防工程运行监测与报警','JC_gcyx.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>人防工程运行监测与报警</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('防汛检测与报警','JC_fx.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>防汛检测与报警</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('入侵监测与报警','JC_rq.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>入侵监测与报警</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('整体检测与报警','JC_zt.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>整体检测与报警</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('突发事件管理','JC_tfsj.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>突发事件管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('短信报警','JC_dx.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>短信报警</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('语音报警','JC_yy.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>语音报警</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" style="border-bottom:1px solid #dfdfdf;">
+                            <i class="iconfont left-nav-li" lay-tips="数字化巡检"><img src="images/tb3.png" width=30></i>
+                            <cite style="font-size:16px; font-weight:blod;">数字化巡检</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('巡检计划制定管理','XJ_jhzd.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>巡检计划制定管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('巡检任务执行跟踪管理','XJ_xjrw.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>巡检任务执行跟踪管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('巡检整改管理','XJ_xjzg.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>巡检整改管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('巡检归档','XJ_xjgd.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>巡检归档</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('巡检报告生成管理','XJ_xjbg.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>巡检报告生成管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('安全巡查计划制定管理','XJ_aqxj.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>安全巡查计划制定管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('安全巡查任务跟踪管理','XJ_aqxc.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>安全巡查任务跟踪管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('安全巡查档案管理','XJ_xcda.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>安全巡查档案管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('安全巡查报告生成管理','XJ_aqxcbg.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>安全巡查报告生成管理</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+					<li>
+                        <a href="javascript:;" style="border-bottom:1px solid #dfdfdf;">
+                            <i class="iconfont left-nav-li" lay-tips="维护维修管理"><img src="images/tb4.png" width=30></i>
+                            <cite style="font-size:16px; font-weight:blod;">维护维修管理</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('维护维修计划管理','WH_whjh.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>维护维修计划管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('维护维修申报管理','WH_whsb.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>维护维修申报管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('维护维修任务跟踪管理','WH_whrw.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>维护维修任务跟踪管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('维护维修报告生成管理','WH_whbg.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>维护维修报告生成管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('维护维修备案管理','WH_whba.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>维护维修备案管理</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+					<li>
+                        <a href="javascript:;" style="border-bottom:1px solid #dfdfdf;">
+                            <i class="iconfont left-nav-li" lay-tips="人防三维一张图"><img src="images/tb5.png" width=30></i>
+                            <cite style="font-size:16px; font-weight:blod;">人防三维一张图</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('人防三维一张图','SW_swyzt.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>人防三维一张图</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+					<li>
+                        <a href="javascript:;" style="border-bottom:1px solid #dfdfdf;">
+                            <i class="iconfont left-nav-li" lay-tips="知识库"><img src="images/tb6.png" width=30></i>
+                            <cite style="font-size:16px; font-weight:blod;">知识库</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('预案管理','ZSK_ya.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>预案管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('案例管理','ZSK_al.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>案例管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('知识管理','ZSK_zs.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>知识管理</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('通讯录管理','ZSK_txl.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>通讯录管理</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="javascript:;" style="border-bottom:1px solid #dfdfdf;">
+                            <i class="iconfont left-nav-li" lay-tips="综合统计分析"><img src="images/tb7.png" width=30></i>
+                            <cite style="font-size:16px; font-weight:blod;">综合统计分析</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            
+							<li>
+                                <a onclick="xadmin.add_tab('工程统计与分析','TJ_gctj.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>工程统计与分析</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('设备设施统计与分析','TJ_sbss.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>设备设施统计与分析</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('设备巡检情况统计与分析','TJ_sbxj.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>设备巡检情况统计与分析</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('安全巡检情况统计与分析','TJ_aqxc.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>安全巡检情况统计与分析</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('维护维修情况统计与分析','TJ_whwx.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>维护维修情况统计与分析</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('巡查整改统计与分析','TJ_xczg.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>巡查整改统计与分析</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('报警统计与分析','TJ_bj.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>报警统计与分析</cite></a>
+                            </li>
+							<li>
+                                <a onclick="xadmin.add_tab('突发事件统计与分析','TJ_tfsj.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>突发事件统计与分析</cite></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" style="border-bottom:1px solid #dfdfdf;">
+                            <i class="iconfont left-nav-li" lay-tips="集成展现"><img src="images/tb8.png" width=30></i>
+                            <cite style="font-size:16px; font-weight:blod;">集成展现</cite>
+                            <i class="iconfont nav_right">&#xe697;</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a onclick="xadmin.add_tab('集成展现','bigdata/activity.html')">
+                                    <i class="iconfont">&#xe6a7;</i>
+                                    <cite>集成展现</cite></a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+                 
+                </ul>
+            </div>
+        </div>
+        <!-- <div class="x-slide_left"></div> -->
+        <!-- 左侧菜单结束 -->
+        <!-- 右侧主体开始 -->
+        <div class="page-content">
+            <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+                <ul class="layui-tab-title">
+                    <li class="home">
+                        <i class="layui-icon">&#xe68e;</i>我的桌面</li></ul>
+                <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
+                    <dl>
+                        <dd data-type="this">关闭当前</dd>
+                        <dd data-type="other">关闭其它</dd>
+                        <dd data-type="all">关闭全部</dd></dl>
+                </div>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                    </div>
+                </div>
+                <div id="tab_show"></div>
+            </div>
+        </div>
+        <div class="page-content-bg"></div>
+        <style id="theme_style"></style>
+        <!-- 右侧主体结束 -->
+        <!-- 中部结束 -->
+    </body>
+<script>
+	var User = $.cookie('U'); 
+	var RoleID = $.cookie('R'); 
+	var District = $.cookie('D'); 
+	var Province = $.cookie('P'); 
+	var Name = $.cookie('N'); 
+	var City = $.cookie('C'); //alert(RoleID);
+	if(RoleID=='JS_D'){
+
+	}
+	if(RoleID=='JS'){
+
+	}
+
+	$('#yhm').text(Name);
+	
+	function aqset(){
+		 layer.open({
+					type: 1
+					,title: '密码修改'
+					,closeBtn: false
+					,area: '750px;'
+					,shade: 0.5
+					,btn: ['提交', '取消'] //可以无限个按钮
+					,btnAlign: 'c'
+					,move: false
+					,content: $('#aqset')
+					,fixed: false
+					,closeBtn: 1
+					,success: function(index,layero){
+				
+					}
+					,yes: function(index, layero){
+						$('#uesrID').val(User);
+						var d=$("#aqsetform").serialize();	
+							if($('#newpsw').val()==""){
+								layer.msg("请输入密码！");
+							}
+							if($('#newpsw').val()==$('#qrpsw').val()){
+									
+									$.post("../../../upPwd",d,function(result){ 
+										if(result=="no"){
+											layer.alert('旧密码输入错误！');
+										}
+										if(result=="ok"){
+											layer.alert('修改成功！',function(){
+											 location.reload();
+											});
+										}
+									});
+							
+							}else{
+								layer.msg("两次密码不相同，请重新输入！");
+							}								
+					}
+				  });
+		}
+</script>
+<div id="aqset" style="padding: 20px 30px 0px 30px; line-height: 22px; background-color: #fefefe; color: ; font-weight: 300; display:none;">
+		<form class="layui-form layui-form-pane" id="aqsetform" action="">
+				<input type=hidden id="uesrID" name="userid">
+				  <div class="layui-form-item">
+					<label class="layui-form-label">旧密码</label>
+					<div class="layui-input-block">
+					  <input type="password"  name="olduserpassword" lay-verify="required" autocomplete="off" placeholder="请输入旧密码" class="layui-input">
+					</div>
+				  </div>
+				  <div class="layui-form-item">
+					<label class="layui-form-label">新密码</label>
+					<div class="layui-input-block">
+					  <input type="password"  id="newpsw" lay-verify="required" autocomplete="off" placeholder="请输入新密码,5-16个字符，数字和英文组合" class="layui-input">
+					</div>
+				  </div>
+				  <div class="layui-form-item">
+					<label class="layui-form-label">确认密码</label>
+					<div class="layui-input-block">
+					  <input type="password" name="userpassword" id="qrpsw" lay-verify="required" autocomplete="off" placeholder="确认密码" class="layui-input">
+					</div>
+				  </div>
+		</form>
+</div>
+</html>

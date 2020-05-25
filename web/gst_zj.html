@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://v3.bootcss.com/examples/navbar-fixed-top/# -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link rel="shortcut icon" href="favicon.ico">
+
+    <title>阳光人防-江苏省人防工程信息公开平台</title>
+
+    
+   <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+	  <script src="js/ie-emulation-modes-warning.js"></script>
+	<!-- 用户自定义模板css文件 -->
+    <link href="style/custom.css" rel="stylesheet">
+    <link href="layui/css/layui.css" rel="stylesheet">
+	<style>
+	.navbar-header{float:right;}
+	</style>
+  </head>
+
+  <body scrollTop=0>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+		<div class="navbar-header"  style="float:left; padding-top:8px;">
+		  
+		    <!--div class="dropdown">
+				<a id="cityname" style="font-weight:bold; color:#FF8C14;">江苏省</a>
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				选择城市
+				<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="margin-left:45px;">
+				<li><a href="?city=js">江苏省</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="?city=nj">南京市</a></li>
+				<li><a href="?city=wx">无锡市</a></li>
+				<li><a href="?city=xz">徐州市</a></li>
+				<li><a href="?city=cz">常州市</a></li>
+				<li><a href="?city=sz">苏州市</a></li>
+				<li><a href="?city=nt">南通市</a></li>
+				<li><a href="?city=lyg">连云港市</a></li>
+				<li><a href="?city=ha">淮安市</a></li>
+				<li><a href="?city=yc">盐城市</a></li>
+				<li><a href="?city=yz">扬州市</a></li>
+				<li><a href="?city=zj">镇江市</a></li>
+				<li><a href="?city=tz">泰州市</a></li>
+				<li><a href="?city=sq">宿迁市</a></li>
+			  </ul>
+			</div-->
+        </div>
+        <div class="navbar-header">
+        
+
+
+	  
+           <ul class="nav navbar-nav navbar-right" style="">
+            <li><a href="Xadmin/login.html">用户登录</a></li>
+			<li><a id="fhindex" href="ygrf.html">返回首页</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	<div class="jumbotron" style="margin-bottom:0; margin-top:70px;  padding:0; border-bottom: 4px solid #36A698; background: #FFFFFF;" >
+	<div class="container" style="margin-top: -19px;">
+		<div class="row">
+			<div class="col-md-9 mBg">
+			
+				<div class="">
+					<ul class="nav navbar-nav">
+						<li style="padding: 0; margin: 0;"><img id="logoname" src="images/logo.png"></li>
+					</ul>
+				</div>
+			
+			</div>
+			<div class="col-md-3 mBg">
+			
+				<!--div class="input-group" style="margin-top:38px;">  
+					   <input type="text" style="border-radius: 30px 0px 0px 30px;" class="form-control"placeholder="请输入关键字" / >  
+							<span class="input-group-btn">  
+							   <button class="btn btn-default btn-search" style="border-radius: 0px 30px 30px 0px;"><span style="color:#888;" class="glyphicon glyphicon-search"></span></button>  
+							</span>  
+				</div-->
+			
+			</div>
+		</div>
+      </div>
+	</div>
+	<div class="jumbotron" style="padding-top: 15px; padding-bottom: 15px; height:50px;">
+		<div class="container">
+			<ul class="nav navbar-nav zMenu1">
+						<li class="dropdown mCont"><a id="ptindex"  href="ygrf.html" class="dropdown-toggle" >平台首页</a>
+						</li>
+						<li class="dropdown mCont"><a href="" class="dropdown-toggle" data-toggle="dropdown">公&nbsp;&nbsp;示&nbsp;&nbsp;台 <span class="caret"></span></a>
+							<ul class="dropdown-menu sMenu" role="menu">
+								<li><a id="spmenu" href="gst_sp.html">结建人防工程审批</a></li>
+								<li><a id="zsmenu" href="gst_zs.html">人防工程易地建设<br/>费征收</a></li>
+								<li><a id="ysmenu" href="gst_ys.html">人防工程竣工验收</a></li>
+								<li><a id="zjmenu" href="gst_zj.html">人防单独建设工程</a></li>
+								<li><a id="czmenu" href="gst_cz.html">人防资产有偿使用</a></li>
+							</ul>
+						</li>
+						<li class="dropdown mCont"><a href="" class="dropdown-toggle" data-toggle="dropdown">投诉建议 <span class="caret"></span></a>
+							<ul class="dropdown-menu sMenu" role="menu">
+								<li><a href="http://rfb.nanjing.gov.cn/hdjl/zrxx/" target="_blank">南京市</a></li>
+								<li><a href="http://rfb.wuxi.gov.cn/fzlm/hdjlgny/lxblgny/wyxx/index.shtml" target="_blank">无锡市</a></li>
+								<li><a href="http://www.xzrf.gov.cn/leavedetail.aspx?guideid=100&type=3" target="_blank">徐州市</a></li>
+								<li><a href="http://czrf.changzhou.gov.cn/class/POPCLEEH" target="_blank">常州市</a></li>
+								<li><a href="http://www.rfb.suzhou.gov.cn/e/DoInfo/AddFeedback.php?mid=13&enews=MAddInfo&classid=126" target="_blank">苏州市</a></li>
+								<li><a href="http://rfb.nantong.gov.cn/truecms/visitorController/toWriteLetter.do?type=2&zdjc=ntsmfj" target="_blank">南通市</a></li>
+								<li><a href="http://www.lyg.gov.cn/TrueCMS/visitorController/toDeptletterList.do?mailBoxId=dc597ad4-6c8c-4364-9094-ab2d9bbe04b1" target="_blank">连云港市</a></li>
+								<li><a href="http://222.184.59.52:8083/wsxf/ha_wsxf/ygxf/wsts_szxx.htm?orgid=32083&xzqhdm=32087" target="_blank">淮安市</a></li>
+								<li><a href="http://www.yancheng.gov.cn/jact/front/mailwrite.do?sysid=1&groupid=168&userids=G168&yc" target="_blank">盐城市</a></li>
+								<li><a href="http://mfj.yangzhou.gov.cn/xmfj/jzxx/wztt.shtml" target="_blank">扬州市</a></li>
+								<li><a href="http://111.231.53.146:8081/wsxf/zjsswsjxx/ygxf/wsts.htm?orgid=32111815&xzqhdm=321100000000" target="_blank">镇江市</a></li>
+								<li><a href="http://mfj.taizhou.gov.cn/jact/front/front_main?sysid=1" target="_blank">泰州市</a></li>
+								<li><a href="http://bbs.suqian.cn/forum.php?mod=forumdisplay&fid=43" target="_blank">宿迁市</a></li>
+							</ul>
+						</li>
+						<li class="dropdown mCont"><a href="http://mf.jiangsu.gov.cn/col/col49279/index.html?number=03" class="dropdown-toggle" target="_blank">政策法规</a>
+						</li>
+						<li class="dropdown mCont"><a href="" class="dropdown-toggle" data-toggle="dropdown">曝光台 <span class="caret"></span></a>
+							<ul class="dropdown-menu sMenu" role="menu">
+								<li><a href="#"></a></li>
+					
+							</ul>
+						</li>
+				</ul>
+		</div>
+	</div>
+	<div class="jumbotron" style="height:160px; background:url(images/banner1.jpg) no-repeat #ececec; margin-top:-30px;">
+
+    </div>
+	
+	
+    <div class="container">
+	<div class="row" style="margin-bottom: 30px;">
+		<div class="col-md-3" style="height:100%;">
+				<img src="images/gst.jpg" width=270>
+				<div class="cside" style="width:270px;">
+					<ul>
+						<li>
+							<a id="spsidemenu" href="gst_sp.html">结建人防工程审批</a>
+						</li>
+						<li>
+							<a id="zssidemenu" href="gst_zs.html">人防工程易地建设费征收</a>
+						</li>
+						<li>
+							<a id="yssidemenu" href="gst_ys.html">人防工程竣工验收</a>
+						</li>
+						<li class="this">
+							<a id="zjsidemenu" href="gst_zj.html" class="this">人防单独建设工程</a>
+						</li>
+						<li>
+							<a id="czsidemenu" href="gst_cz.html">人防工程有偿使用</a>
+						</li>
+					</ul>
+				</div>
+				<img src="images/timgb.jpg" width=270>
+		</div>
+		<div class="col-md-9" style="background:#f2f2f2; height:100%; padding-top:10px;">
+			
+			<div style="width:; height:50px; background:#f2f2f2; line-height:50px; border-bottom:1px solid #dfdfdf; border-left:5px solid #36A698; padding-left:15px;">
+				<a style="font-size:18px; font-weight:bold; color:#333;">公示内容<a id="cs"  style="font-size:18px; font-weight:bold; color:#333;"></a></a>
+				<form class="layui-form layui-col-space5" style="float:right;">
+					<div class="layui-inline layui-show-xs-block dqchosse" style="display:none;">
+					   按地区选择：</div>
+					<div class="layui-inline layui-show-xs-block dqchosse" style="display:none;">
+						<select id="cityVAL" lay-filter="cityVAL">
+							<option value="南京市">南京市</option>
+							<option value="无锡市">无锡市</option>
+							<option value="徐州市">徐州市</option>
+							<option value="常州市">常州市</option>
+							<option value="苏州市">苏州市</option>
+							<option value="南通市">南通市</option>
+							<option value="连云港市">连云港市</option>
+							<option value="淮安市">淮安市</option>
+							<option value="盐城市">盐城市</option>
+							<option value="扬州市">扬州市</option>
+							<option value="镇江市">镇江市</option>
+							<option value="泰州市">泰州市</option>
+							<option value="宿迁市">宿迁市</option>
+						</select>
+					</div>
+					<div class="layui-inline layui-show-xs-block">
+					   按工程名称搜索：</div>
+					<div class="layui-inline layui-show-xs-block">
+						<input type="text" id="gcname" placeholder="请输入工程名称" autocomplete="off" class="layui-input"></div>
+					<div class="layui-inline layui-show-xs-block">
+						<a class="layui-btn" id="get-name">
+							<i class="layui-icon">&#xe615;</i></a>
+					</div>
+				</form>
+			</div>	
+			<div class="zhengwen" style="width:; height:; background:#f2f2f2;">
+				<table id="demo" class="layui-table" lay-filter="demo"></table>
+				<script type="text/html" id="zizeng">
+					{{d.LAY_TABLE_INDEX+1}}
+				</script>
+				<script type="text/html" id="barDemo">
+				  <a class="layui-btn layui-btn-xs" lay-event="info"><i class="fa fa-info-circle" aria-hidden="true"></i> 详情</a>
+				</script>
+					
+			</div>	
+			
+		</div>
+	
+	  </div>
+	</div>
+	
+  <!-- /container -->
+	
+	<br/>
+	<div class="jumbotron" style="padding-top: 0px; padding-bottom: 0px; margin: 0; background: #dfdfdf;">
+      <div class="container">
+		<div class="row">
+			<div class="col-md-1 cright">
+				<img src="images/dzjg.png"  style="float:right; margin-top: 16px;">
+			</div>
+			<div class="col-md-7 cright" style="margin-top: 16px;">
+				
+				<a>主办单位：江苏省人民防空办公室 版权所有 </a><br/>
+				<a>运行管理：江苏省人民防空办公室机关纪委 地址：南京市宁夏路马鞍山1号 </a>
+			</div>
+			<div class="col-md-4 mBg" style="border-left: 1px solid #999; margin: 20px 0;">
+				<p><img src="images/gov.png"  style="height:30px;"></p>
+				<img src="images/JSGOV.png"  style="margin-top: 5px; height:30px;">
+			</div>
+		</div>
+      </div>
+    </div>
+	
+
+
+
+   <script src="layui/layui.js"></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="layui/jquery.cookie.js"></script>
+	<script> 
+	var cn = '南京市';
+	</script> 
+    <script src="layui/citychoose.js"></script>
+	
+	<script type="text/javascript">
+	
+	layui.use(['element','layer','form'], function(){
+	  var element = layui.element;
+	  var layer = layui.layer;
+	  var form = layui.form;
+		  
+	});
+	layui.use('table', function(){
+	  var table = layui.table;
+	  
+	  table.render({
+		elem: '#demo'
+	//	,toolbar: '#toolbarDemo'
+		,url:  'Xadmin/user.json'
+		,page: true //开启分页
+		,limit: 30
+		,id: 'testReload1'
+		,cols: [[ //表头
+		  {title: '序号', width:80, fixed: 'left',templet:'#zizeng'}
+	//	  ,{field: 'wid', title: '人防审批号'}
+		  ,{field: 'proname', title: '项目名称'}
+		  ,{field: 'proaddr', title: '项目地址'}
+		  ,{field: 'itime', title: '审批时间',sort:true} 
+		  ,{fixed: 'right', title:'查看', toolbar: '#barDemo', width:80}
+		]]
+		,where: {
+			time:new Date()
+		  }
+	  });
+		layui.form.on('select(cityVAL)', function(data){
+			table.reload('testReload1', {
+				url: '../../ygrf/ZjJSON?action=2&value='+cn+'&value1='+data.value
+			});
+		});
+	  table.on('tool(demo)', function(obj){
+			  if(obj.event === 'info'){ 
+				   window.open("content.html?lb=zj&iid="+obj.data.id);    
+				} 
+			});
+		});
+	$('#get-name').click(function() {
+		var qym = $('#gcname').val();
+		layui.table.reload('testReload1', {
+			url:'../../ygrf/ZjJSON?action=3&value='+qym+'&value1='+cn
+		});
+		
+	});	
+	
+	</script>
+
+
+</body>
+</html>

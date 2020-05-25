@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>阳光人防-江苏省人防工程信息公开平台</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../layui/css/style.css">
+  <link rel="stylesheet" href="../layui/css/printstylesheet.css" media="screen,print">
+  <style>
+  th{background:#f2f2f2;}
+  th,td{height:20px;line-height:20px;}
+  </style>
+</head>
+<body class="layui-layout-body" style="padding:10px; overflow-y:auto;">
+<div class="layui-fluid">
+ <div class="layui-row">
+    <div class="layui-col-sm12">
+
+		   <table cellspacing="0" width=100%>
+		    <tr><th style="width:150px;">人防审批号</th><td colspan=2 id="widVAL"></td></tr>
+		    <tr><th>发改委项目编号</th><td colspan=2 id="pwidVAL"></td></tr>
+		    <tr><th>项目名称</th><td colspan=2 id="pnameVAL"></td></tr>
+			<tr><th>项目地址</th><td colspan=2 id="placeVAL"></td></tr>
+			<tr><th>验收时间</th><td colspan=2 id="pdateVAL"></td></tr>
+			<tr><th>建设单位</th><td colspan=2 id="jsdwVAL"></td></tr>
+			<tr><th>验收结果</th><td colspan=2 id="ysjgVAL"></td></tr>
+			<tr><th>验收人员</th><td colspan=2 id="ysryVAL"></td></tr>
+			<tr><th>验收负责人</th><td colspan=2 id="ysfzrVAL"></td></tr>
+			<tr><th>工程设计单位</th><td colspan=2 id="sjdwVAL"></td></tr>
+			<tr><th>工程监理单位</th><td colspan=2 id="jldwVAL"></td></tr>
+			<tr><th>工程防护设备<br/>生产安装企业</th><td colspan=2 id="fhsbVAL"></td></tr>
+			<tr><th>工程审图机构</th><td colspan=2 id="stjgVAL"></td></tr>
+			<tr><th>工程检测机构</th><td colspan=2 id="jcjgVAL"></td></tr>
+			<tr><th>备注</th><td colspan=2 id="beizhuVAL"></td></tr>
+			
+		 </table>
+
+    </div>
+  </div>
+</div>
+<script src="../layui/layui.js"></script>
+<script src="../layui/jquery.min.js"></script>
+<script src="../layui/jquery.cookie.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['element','layer'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+});
+
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+	var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	   if (r != null) return decodeURI(r[2]); return null; //返回参数值
+}
+var iid = getUrlParam('iid');
+$.get("../../../ygrf/YsJSON?limit=100000&page=1&action=ID&value="+iid,function(result){   // alert(result);
+	result = result.replace(/null/g,"");
+	var models = eval('(' + result + ')');
+	
+	$("#widVAL").text(models.data[0].wid);
+	$("#pwidVAL").text(models.data[0].pwid);
+	$("#pnameVAL").text(models.data[0].pname);
+	$("#placeVAL").text(models.data[0].province+models.data[0].city+models.data[0].county);
+	$("#pdateVAL").text(models.data[0].pdate);
+	
+	$("#jsdwVAL").text(models.data[0].jsdw);
+	$("#ysjgVAL").text(models.data[0].ysjg);
+	$("#ysryVAL").text(models.data[0].ysry);
+	$("#ysfzrVAL").text(models.data[0].ysfzr);
+	$("#sjdwVAL").text(models.data[0].sjdw);
+	$("#jldwVAL").text(models.data[0].jldw);
+	$("#fhsbVAL").text(models.data[0].fhsb);
+	$("#stjgVAL").text(models.data[0].stjg);
+	$("#jcjgVAL").text(models.data[0].jcjg);
+	
+	$("#beizhuVAL").text(models.data[0].beizhu);
+});
+</script>
+</body>
+</html>

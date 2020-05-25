@@ -1,0 +1,13 @@
+.lct{text-align:center; }
+.lct .bz{text-align:center;  width:120px; height:40px; line-height:40px; background:#009688; border-radius:8px; margin:2px auto;}
+.lct .defut{background:#dfdfdf;}
+.lct .danger{background:#FF5722;}
+.lct .no{background:#888888;}
+.lct .step5{width:160px;}
+.lct .bz a{font-family:微软雅黑; font-size:16px; font-style:normal; font-weight:normal; color:#ffffff;}
+.lct .jt_down{width:120px; height:40px; text-align:center;  margin:0 auto;}
+
+.lct .bz .fxd{ height:40px; background:url(jt1.png) no-repeat 0 50%; position:relative; top:-42px; left:130px; text-align:left; color:#555555; font-style:normal; text-indent:0px;}
+.lct .bz .fxdtext { border:2px solid #dfdfdf; margin-left:40px; border-radius:8px; height:38px;   padding:0 10px;}
+.lct .bz .pass { border:2px solid #009688; }
+.lct .bz .jingao {border:2px solid #FF5722;  color:#FF5722; }

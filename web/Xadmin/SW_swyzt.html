@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>后台管理</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+		<link href='./css/FRbigemap.css' rel='stylesheet'/>
+		<script src='./js/FRbigemap.js'></script>
+        <link rel="stylesheet" href="./css/font.css">
+        <link rel="stylesheet" href="./css/xadmin.css">
+        <link rel="stylesheet" href="./css/font-awesome/css/font-awesome.min.css">
+		<style>
+			body { margin: 0; padding: 0; }
+			#map { position: absolute; top: 40px; bottom: 0; width: 100%; }
+			.map_zoom{
+				position: absolute;
+				left:20px;
+				top:52px;
+				z-index: 1999999;
+				
+		
+			}
+			.map_zoom2{
+				position: absolute;
+				left:22px;
+				top:80px;
+				z-index: 1999999;
+				
+		
+			}
+			.map_tip{
+				position: absolute;
+				right: 20px;
+				top:50px;
+				z-index: 9;
+			    width:300px;
+				display:none;
+			}
+			::-webkit-scrollbar {
+			  width: 3px;
+			  height: 3px;
+			  background-color: rgba(240, 240, 240, 1);
+			}
+			::-webkit-scrollbar-thumb{
+				-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3);
+				background-color:#dfdfdf;
+			}
+
+			.layui-colla-title{height:30px! important; line-height:30px! important; font-size:13px;}
+			.layui-colla-content{margin:0; padding:0 10px 0 10px;}
+			.layui-colla-content p{border-bottom:1px dashed #dfdfdf; margin-bottom:3px; margin-top:3px;  height:30px; line-height:30px;}
+			.layui-colla-content i{ font-size:12px; cursor:pointer; color:#000; float:right;}
+			.bz_table{}
+			.bz_table thead th{background:#dfdfdf; height:30px; line-height:30px; border:1px solid #dfdfdf;}
+			.bz_table td{text-align:center; height:30px; line-height:30px; border:1px solid #dfdfdf; }
+			.layui-icon{cursor:pointer;}
+			.tpinfo img{width:144px; height:80px;}
+		</style>
+    </head>
+    
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">人防三维一张图</a>
+                <a>
+                    <cite>人防三维一张图</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
+		<div class="map_zoom">
+		<a style="font-size:18px;color:#999;">+</a>
+		</div>
+		<div class="map_zoom2">
+		<a style="font-size:18px;color:#999;">-</a>
+		</div>
+		<div class="map_tip">
+			<div class="layui-card">
+				<div class="layui-card-header" style="background:#33ABA0; color:#ffffff;">人防工程信息 <i class="layui-icon layui-unselect layui-tab-close" style="float:right; cursor:pointer;">ဆ</i></div>
+					<div class="layui-card-body" style="max-height:600px; overflow-y:scroll; margin:0; padding:0;">
+					<div class="layui-collapse">
+					  <div class="layui-colla-item">
+						<h2 class="layui-colla-title">基础信息</h2>
+						<div class="layui-colla-content layui-show">
+							<p>工程名称：<span id="">亳州某某人防工程</span></p>
+							<p>工程地址：<span id="">亳州市光明路某某街道23号</span></p>
+							<p>战时功能：<span id="">人员掩蔽</span></p>
+							<p>建筑面积：<span id="">1351231231平方米</span></p>
+							<p>使用面积：<span id="">135231233平方米</span></p>
+							<p>抗力等级：<span id="">甲级</span></p>
+							<p>防护等级：<span id="">b2</span></p>
+						</div>
+					  </div>
+					  <div class="layui-colla-item">
+						<h2 class="layui-colla-title">单位信息</h2>
+						<div class="layui-colla-content">
+							<p>建设单位：<span id="">安徽某某建设工程有限公司</span><i class="layui-icon qyinfo">&#xe60b;</i></p>
+							<p>设计单位：<span id="">亳州某某设计有限公司</span><i class="layui-icon qyinfo">&#xe60b;</i></p>
+							<p>监理单位：<span id="">亳州某某工程咨询有限公司</span><i class="layui-icon qyinfo">&#xe60b;</i></p>
+							<p>防护设备企业：<span id="">亳州某某防护设备厂</span><i class="layui-icon qyinfo">&#xe60b;</i></p>
+							<p>维护单位：<span id="">亳州某某防护设备厂</span><i class="layui-icon qyinfo">&#xe60b;</i></p>
+						</div>
+					  </div>
+					  <div class="layui-colla-item">
+						<h2 class="layui-colla-title">设备信息</h2>
+						<div class="layui-colla-content">
+							<table class="bz_table" lay-size="sm" style="margin-top:0px; margin-left:-10px; width:295px;">
+						
+							  <thead>
+								<tr>
+								  <th style="width:200px! important;">设备名称</th>
+								  <th>数量</th>
+								  <th>详情</th>
+								</tr> 
+							  </thead>
+							  <tbody>
+								<tr>
+								  <td style="text-align:left;padding-left:10px;">防护密闭门</td>					
+								  <td>45</td>
+								  <td><a class="layui-icon sbinfo">&#xe60b;</a></td>
+								</tr>
+								<tr>
+								  <td style="text-align:left;padding-left:10px;">启闭方式为手动的防护门</td>					
+								  <td>21</td>
+								  <td><a class="layui-icon sbinfo">&#xe60b;</a></td>
+								</tr>
+								<tr>
+								  <td style="text-align:left;padding-left:10px;">防爆波闸阀</td>					
+								  <td>126</td>
+								  <td><a class="layui-icon sbinfo">&#xe60b;</a></td>
+								</tr>
+								<tr>
+								  <td style="text-align:left;padding-left:10px;">防爆地漏</td>					
+								  <td>234</td>
+								  <td><a class="layui-icon sbinfo">&#xe60b;</a></td>
+								</tr>
+								<tr>
+								  <td style="text-align:left;padding-left:10px;">烟雾报警器</td>
+								  <td>4</td>
+								  <td><a class="layui-icon sbinfo">&#xe60b;</a></td>
+								</tr>
+							  </tbody>
+							</table>
+						</div>
+					  </div>
+					  <div class="layui-colla-item">
+						<h2 class="layui-colla-title">口部图片</h2>
+							<div class="layui-colla-content layui-show" style="margin:0; padding:0; cursor:pointer; height:80px; overflow:hidden;">
+								<div id="layer-photos-demo" class="layer-photos-demo tpinfo">
+								  <img layer-pid="" layer-src="img/1.jpg" src="img/1.jpg" alt="">
+								  <img layer-pid="" layer-src="img/3.jpg" src="img/3.jpg" alt="">
+								  <img layer-pid="" layer-src="img/2.jpg" src="img/2.jpg" alt="">
+								  <img layer-pid="" layer-src="img/1.jpg" src="img/1.jpg" alt="">
+								  <img layer-pid="" layer-src="img/3.jpg" src="img/3.jpg" alt="">
+								  <img layer-pid="" layer-src="img/2.jpg" src="img/2.jpg" alt="">
+								</div>
+							</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div id='map'> </div>
+		
+			   
+    </body>
+	<script src="./lib/layui/layui.js" charset="utf-8"></script>
+	<script type="text/javascript" src="./js/xadmin.js"></script>
+	<script src="../layui/jquery.min.js"></script>
+	<script src="../layui/jquery.cookie.js"></script>
+	<script>
+	var User = $.cookie('U'); 
+	var RoleID = $.cookie('R'); 
+	var District = $.cookie('D'); 
+	var Province = $.cookie('P'); 
+	var Name = $.cookie('N'); 
+	var City = $.cookie('C');
+
+	if(RoleID=='JS'){
+
+	}
+	</script>
+	<script>
+        BM.Config.HTTP_URL = 'http://localhost:9000';
+        var map = BM.map('map', 'bigemap.ddx17rca', { center: [33.845861147401, 115.77863216225525], zoom: 7, zoomControl: true });      
+		var latlng = BM.latLng(33.845861147401, 115.77863216225525);
+		map.setView(latlng);
+		map.setZoom(13);
+		BM.marker([33.8464997462375, 115.77859282460851],{icon:BM.icon({iconUrl:'images/ico_yiliao.png'}),opacity:0.8}).on('click', function(e) {$('.map_tip').show(100);$('#zuobiao').text(e.latlng.lat)}).addTo(map);
+		BM.marker([33.85958254798477, 115.7267189025879],{icon:BM.icon({iconUrl:'images/ico_zhihui.png'})}).on('click', function(e) {$('.map_tip').show(100);$('#zuobiao').text(e.latlng.lat)}).addTo(map);
+		BM.marker([33.87953701355924, 115.80808639526369],{icon:BM.icon({iconUrl:'images/ico_qita.png'})}).on('click', function(e) {$('.map_tip').show(100);$('#zuobiao').text(e.latlng.lat)}).addTo(map);
+		BM.marker([33.811672804470476, 115.81872940063478],{icon:BM.icon({iconUrl:'images/ico_yanbi.png'})}).on('click', function(e) {$('.map_tip').show(100);$('#zuobiao').text(e.latlng.lat)}).addTo(map);
+		BM.marker([33.8126236499179, 115.72563171735968],{icon:BM.icon({iconUrl:'images/ico_fangkong.png'})}).on('click', function(e) {$('.map_tip').show(100);$('#zuobiao').text(e.latlng.lat)}).addTo(map);
+		BM.marker([33.801498028777814, 115.76082229963507],{icon:BM.icon({iconUrl:'images/ico_zhihui.png'})}).on('click', function(e) {$('.map_tip').show(100);$('#zuobiao').text(e.latlng.lat)}).addTo(map);
+		BM.marker([33.795078751901, 115.88928222656251],{icon:BM.icon({iconUrl:'images/ico_yanbi.png'})}).on('click', function(e) {$('.map_tip').show(100);$('#zuobiao').text(e.latlng.lat)}).addTo(map);
+		BM.marker([33.90176649398626, 115.87812423706056],{icon:BM.icon({iconUrl:'images/ico_fangkong.png'})}).on('click', function(e) {$('.map_tip').show(100);$('#zuobiao').text(e.latlng.lat)}).addTo(map);
+
+	//	map.on('click',function(e){   //点击事件
+    //        var str='lat:'+e.latlng.lat+',lng:'+e.latlng.lng;
+    //        alert(str);
+    //    });
+	$(".layui-tab-close").click(function(){
+	  $('.map_tip').hide(100);
+	});
+	
+	$(".qyinfo").click(function(){
+		layer.open({
+			  type: 2, 
+			  title: "企业信息",
+			  content: '../info/qytable.html',
+			  area:['750px','370px'],
+			  btn:'关闭',
+			  btnAlign: 'c'
+		});
+	});
+	$(".sbinfo").click(function(){
+		layer.open({
+			  type: 2, 
+			  title: "设备信息",
+			  content: '../info/DN_sbssxx.html',
+			  area:['750px','480px'],
+			  btn:'关闭',
+			  btnAlign: 'c'
+		});
+	});
+	
+	$(".tpinfo").click(function(){
+		layer.photos({
+		  photos: '#layer-photos-demo'
+		  ,anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
+		}); 
+	});
+	
+    </script>
+	
+<script>
+layui.use(['element','layer','form'], function(){
+  var element = layui.element;
+  var layer = layui.layer;
+  var form = layui.form;
+      
+});
+layui.use('table', function(){
+  var table = layui.table;
+  
+  table.render({
+    elem: '#demo'
+	,toolbar: '#toolbarDemo'
+    ,url: 'user.json'
+    ,page: true //开启分页
+    ,limit: 30
+	,id: 'testReload1'
+    ,cols: [[ //表头
+      {title: '序号', width:80, fixed: 'left',templet:'#zizeng'}
+      ,{field: 'panme', title: '维护维修备案号'}
+      ,{field: 'wid', title: '维护维修项目名称'}
+      ,{field: 'jsdw', title: '维护维修项目所在地'}
+      ,{field: 'xmdz', title: '维护维修单位'}
+      ,{field: 'xmdz', title: '维护维修时间'}
+      ,{field: 'xmdz', title: '维护维修人员'}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:120}
+    ]]
+	,done:function(){
+
+	}
+  });
+    layui.form.on('select(cityVAL)', function(data){
+		table.reload('testReload1', {
+			url: '../../../ygrf/SpJSON?action=1&value='+data.value
+		});
+	});
+	
+	
+	
+  table.on('tool(demo)', function(obj){
+	  if(obj.event === 'info'){ 
+		   layer.open({
+			  type: 2, 
+			  title: "维护维修备案管理",
+			  content: '../xmk/table1.html?iid='+obj.data.id ,
+			  area:['750px','90%'],
+			  shadeClose: true
+		  });
+		} else if(obj.event === 'edit'){
+
+		} else if(obj.event === 'gc'){
+
+		}
+	});
+});
+$('#get-name').click(function() {
+	var qym = $('#gcname').val();
+	layui.table.reload('testReload1', {
+		url:'../../../ygrf/SpJSON?action=3&value='+qym+'&value1='+City
+	});
+	
+});
+
+function jjsp() {
+	layer.open({
+		  type: 2, 
+		  title: "维护维修备案管理",
+		  content: '../add/WH_form5.html',
+		  area:['750px','50%']
+	});
+}
+</script>
+
+
+</html>

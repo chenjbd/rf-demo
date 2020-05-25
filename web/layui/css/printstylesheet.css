@@ -1,0 +1,27 @@
+body {
+
+font-size: 10pt;
+
+background-color: white;
+color: black;
+}
+
+table{border:0px solid #999; margin:10px auto; width:95%;}
+th{border:1px solid #555; padding:5px 10px;font-family:"黑体";}
+td{border:1px solid #555; padding:5px 10px;font-family:黑体! important;}
+table { page-break-inside:auto }
+tr { page-break-inside:avoid; page-break-after:auto }
+thead { display:table-header-group }
+tfoot { display:table-footer-group }
+
+#dyanniu:hover{color:#ececec;}
+#dyanniu{color:#ffffff; }
+#qyjj{height:300px; }
+#cdtjztqkjj_s{height:300px; }
+#gzjl{height:300px; }
+#fzrgzjl{height:300px; }
+#z_gzjl{height:300px; }
+#fr_gzjl{height:300px; }
+#fzr_gzjl{height:300px; }
+
+
